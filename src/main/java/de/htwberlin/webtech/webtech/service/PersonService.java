@@ -26,16 +26,19 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
+
     public Person findById(Long id) {
         var personEntity = personRepository.findById(id);
         return personEntity.isPresent()? transformEntity(personEntity.get()) : null;
     }
+
 
     public Person create(PersonManipulationRequest request) {
         var personEntity = new PersonEntity(request.getFirstName(), request.getLastName(), request.getAdresse());
         personEntity = personRepository.save(personEntity);
         return transformEntity(personEntity);
     }
+
 
     public Person update(Long id, PersonManipulationRequest request) {
         var personEntityOptional = personRepository.findById(id);
@@ -49,6 +52,16 @@ public class PersonService {
         personEntity = personRepository.save(personEntity);
         return transformEntity(personEntity);
     }
+
+
+    public boolean deleteById(Long id) {
+        if (!personRepository.existsById(id)) {
+            return false;
+        }
+        personRepository.deleteById(id);
+        return true;
+    }
+
 
     private Person transformEntity(PersonEntity personEntity) {
         return new Person(
