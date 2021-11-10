@@ -1,8 +1,8 @@
 package de.htwberlin.webtech.webtech.web;
 
 import de.htwberlin.webtech.webtech.service.UserService;
-import de.htwberlin.webtech.webtech.web.api.Person;
-import de.htwberlin.webtech.webtech.web.api.PersonManipulationRequest;
+import de.htwberlin.webtech.webtech.web.api.User;
+import de.htwberlin.webtech.webtech.web.api.UserManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,18 +21,18 @@ public class UserRestController {
 
 
     @GetMapping(path = "/api/v1/persons")
-    public ResponseEntity<List<Person>> kunden() {return ResponseEntity.ok(userService.findAll());}
+    public ResponseEntity<List<User>> kunden() {return ResponseEntity.ok(userService.findAll());}
 
 
     @GetMapping(path = "/api/v1/persons/{id}")
-    public ResponseEntity<Person> kundenByID(@PathVariable Long id) {
+    public ResponseEntity<User> kundenByID(@PathVariable Long id) {
         var person = userService.findById(id);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
     }
 
 
     @PostMapping(path = "/api/v1/persons")
-    public ResponseEntity<Void> createPerson(@RequestBody PersonManipulationRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createPerson(@RequestBody UserManipulationRequest request) throws URISyntaxException {
         var person = userService.create(request);
         URI uri = new URI("/api/v1/persons/" + person.getId());
         return ResponseEntity.created(uri).build();
@@ -40,7 +40,7 @@ public class UserRestController {
 
 
     @PutMapping(path = "/api/v1/persons/{id}")
-    public ResponseEntity<Person> updatePerson(@PathVariable Long id, @RequestBody PersonManipulationRequest request) {
+    public ResponseEntity<User> updatePerson(@PathVariable Long id, @RequestBody UserManipulationRequest request) {
         var person = userService.update(id, request);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
     }

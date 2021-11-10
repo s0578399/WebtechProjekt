@@ -1,12 +1,12 @@
 package de.htwberlin.webtech.webtech.web.api;
 
-public class Person {
+public class User {
     public long id;
     public String firstName;
     public String lastName;
     public String adresse;
 
-    public Person(long id, String firstName, String lastName, String adresse) {
+    public User(long id, String firstName, String lastName, String adresse) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

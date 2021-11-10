@@ -3,8 +3,8 @@ package de.htwberlin.webtech.webtech.service;
 
 import de.htwberlin.webtech.webtech.persistence.UserEntity;
 import de.htwberlin.webtech.webtech.persistence.UserRepository;
-import de.htwberlin.webtech.webtech.web.api.Person;
-import de.htwberlin.webtech.webtech.web.api.PersonManipulationRequest;
+import de.htwberlin.webtech.webtech.web.api.User;
+import de.htwberlin.webtech.webtech.web.api.UserManipulationRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<Person> findAll() {
+    public List<User> findAll() {
         List<UserEntity> persons = userRepository.findAll();
         return persons.stream()
                 .map(this::transformEntity)
@@ -27,20 +27,20 @@ public class UserService {
     }
 
 
-    public Person findById(Long id) {
+    public User findById(Long id) {
         var personEntity = userRepository.findById(id);
         return personEntity.isPresent()? transformEntity(personEntity.get()) : null;
     }
 
 
-    public Person create(PersonManipulationRequest request) {
+    public User create(UserManipulationRequest request) {
         var personEntity = new UserEntity(request.getFirstName(), request.getLastName(), request.getAdresse());
         personEntity = userRepository.save(personEntity);
         return transformEntity(personEntity);
     }
 
 
-    public Person update(Long id, PersonManipulationRequest request) {
+    public User update(Long id, UserManipulationRequest request) {
         var personEntityOptional = userRepository.findById(id);
         if (personEntityOptional.isEmpty()) {
             return null;
@@ -63,8 +63,8 @@ public class UserService {
     }
 
 
-    private Person transformEntity(UserEntity userEntity) {
-        return new Person(
+    private User transformEntity(UserEntity userEntity) {
+        return new User(
                 userEntity.getId(),
                 userEntity.getFirstName(),
                 userEntity.getLastName(),

@@ -1,12 +1,12 @@
 package de.htwberlin.webtech.webtech.web.api;
 
-public class PersonManipulationRequest {
+public class UserManipulationRequest {
 
     public String firstName;
     public String lastName;
     public String adresse;
 
-    public PersonManipulationRequest(String firstName, String lastName, String adresse) {
+    public UserManipulationRequest(String firstName, String lastName, String adresse) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.adresse = adresse;
