@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PersonRepository extends JpaRepository <PersonEntity, Long> {
+public interface UserRepository extends JpaRepository <UserEntity, Long> {
 
-    List<PersonEntity> findAllByFirstName(String firstName);
+    List<UserEntity> findAllByFirstName(String firstName);
 
 }

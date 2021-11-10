@@ -3,7 +3,7 @@ package de.htwberlin.webtech.webtech.persistence;
 import javax.persistence.*;
 
 @Entity(name = "persons")
-public class PersonEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +19,13 @@ public class PersonEntity {
     @Column(name = "adresse", nullable = false)
     private String adresse;
 
-    public PersonEntity(String firstName, String lastName, String adresse) {
+    public UserEntity(String firstName, String lastName, String adresse) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.adresse = adresse;
     }
 
-    protected PersonEntity() {}
+    protected UserEntity() {}
 
     public long getId() {
         return id;
