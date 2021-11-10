@@ -7,7 +7,7 @@ public class PersonEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private long id;
 
     @Column(name = "first_name", nullable = false)
@@ -19,8 +19,7 @@ public class PersonEntity {
     @Column(name = "adresse", nullable = false)
     private String adresse;
 
-    public PersonEntity(long id, String firstName, String lastName, String adresse) {
-        this.id = id;
+    public PersonEntity(String firstName, String lastName, String adresse) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.adresse = adresse;

@@ -1,28 +1,36 @@
 package de.htwberlin.webtech.webtech.web;
 
+import de.htwberlin.webtech.webtech.service.PersonService;
 import de.htwberlin.webtech.webtech.web.api.Person;
+import de.htwberlin.webtech.webtech.web.api.PersonCreateRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
 public class PersonRestController {
 
-    private List<Person> persons;
+    private final PersonService personService;
 
-    public PersonRestController() {
-        persons = new ArrayList<>();
-        persons.add(new Person(1, "Elias", "Rogov", "12345"));
-        persons.add(new Person(2, "Max", "Muster", "11111"));
-
+    public PersonRestController(PersonService personService) {
+        this.personService = personService;
     }
+
 
     @GetMapping(path = "/api/v1/persons")
-    public ResponseEntity<List<Person>> kunden() {
-        return ResponseEntity.ok(persons);
-    }
+    public ResponseEntity<List<Person>> kunden() {return ResponseEntity.ok(personService.findAll());}
 
+
+    @PostMapping(path = "/api/v1/persons")
+    public ResponseEntity<Void> createPerson(@RequestBody PersonCreateRequest request) throws URISyntaxException {
+        var person = personService.create(request);
+        URI uri = new URI("/api/v1/persons/" + person.getId());
+        return ResponseEntity.created(uri).build();
+    }
 }
