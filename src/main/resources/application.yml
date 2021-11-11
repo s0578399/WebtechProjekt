@@ -21,3 +21,5 @@ spring:
     init:
       platform: postgres
       mode: always
+
+

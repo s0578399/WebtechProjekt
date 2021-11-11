@@ -1,6 +1,5 @@
 package de.htwberlin.webtech.webtech.service;
 
-
 import de.htwberlin.webtech.webtech.persistence.UserEntity;
 import de.htwberlin.webtech.webtech.persistence.UserRepository;
 import de.htwberlin.webtech.webtech.web.api.User;

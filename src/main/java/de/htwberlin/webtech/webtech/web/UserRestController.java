@@ -1,5 +1,4 @@
 package de.htwberlin.webtech.webtech.web;
-
 import de.htwberlin.webtech.webtech.service.UserService;
 import de.htwberlin.webtech.webtech.web.api.User;
 import de.htwberlin.webtech.webtech.web.api.UserManipulationRequest;
@@ -20,32 +19,32 @@ public class UserRestController {
     }
 
 
-    @GetMapping(path = "/api/v1/persons")
+    @GetMapping(path = "/api/v1/users")
     public ResponseEntity<List<User>> kunden() {return ResponseEntity.ok(userService.findAll());}
 
 
-    @GetMapping(path = "/api/v1/persons/{id}")
+    @GetMapping(path = "/api/v1/users/{id}")
     public ResponseEntity<User> kundenByID(@PathVariable Long id) {
         var person = userService.findById(id);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
     }
 
 
-    @PostMapping(path = "/api/v1/persons")
+    @PostMapping(path = "/api/v1/users")
     public ResponseEntity<Void> createPerson(@RequestBody UserManipulationRequest request) throws URISyntaxException {
         var person = userService.create(request);
-        URI uri = new URI("/api/v1/persons/" + person.getId());
+        URI uri = new URI("/api/v1/users/" + person.getId());
         return ResponseEntity.created(uri).build();
     }
 
 
-    @PutMapping(path = "/api/v1/persons/{id}")
+    @PutMapping(path = "/api/v1/users/{id}")
     public ResponseEntity<User> updatePerson(@PathVariable Long id, @RequestBody UserManipulationRequest request) {
         var person = userService.update(id, request);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping(path = "/api/v1/persons/{id}")
+    @DeleteMapping(path = "/api/v1/users/{id}")
     public ResponseEntity<Void> deletePerson(@PathVariable Long id) {
         boolean successful = userService.deleteById(id);
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
