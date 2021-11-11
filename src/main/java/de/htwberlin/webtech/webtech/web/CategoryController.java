@@ -11,7 +11,7 @@ public class CategoryController {
 
         @GetMapping(path = "/categories")
         public ModelAndView categories() {
-            return new ModelAndView("categories");
+            return new ModelAndView("category");
         }
 
     }
