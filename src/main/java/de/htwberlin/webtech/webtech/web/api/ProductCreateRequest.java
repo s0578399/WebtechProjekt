@@ -1,23 +1,13 @@
 package de.htwberlin.webtech.webtech.web.api;
 
-public class Product {
+public class ProductCreateRequest {
 
-    private int id;
     private String name;
     private double price;
 
-    public Product(int id, String name, double price) {
-        this.id = id;
+    public ProductCreateRequest(String name, double price) {
         this.name = name;
         this.price = price;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
