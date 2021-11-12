@@ -1,22 +1,16 @@
 package de.htwberlin.webtech.webtech.web.api;
 
-public class Product {
-    public long id;
+public class ProductManipulationRequest {
+
     public String productName;
     public String productDescription;
     public float costs;
 
-    public Product(long id, String productName, String productDescription, float costs) {
-        this.id = id;
+    public ProductManipulationRequest(String productName, String productDescription, float costs) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.costs = costs;
     }
-
-    public long getId() {
-        return id;
-    }
-
 
     public String getProductName() {
         return productName;

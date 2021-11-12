@@ -1,28 +1,53 @@
 package de.htwberlin.webtech.webtech.web;
-
+import de.htwberlin.webtech.webtech.service.ProductService;
 import de.htwberlin.webtech.webtech.web.api.Product;
+import de.htwberlin.webtech.webtech.web.api.ProductManipulationRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
 public class ProductRestController {
 
-    private List<Product> products;
+    private final ProductService productService;
 
-    public ProductRestController() {
-        this.products = new ArrayList<>();
-        products.add(new Product(1, "Kaktus", 5.00));
-        products.add(new Product(2, "Apfelbaum", 30.00));
-        products.add(new Product(3, "Kirschbaum", 15.00));
+    public ProductRestController(ProductService productService) {
+        this.productService = productService;
     }
 
-    @GetMapping(path = "/api/v1/products")
-    public ResponseEntity<List<Product>>fetchProducts() {
-        return ResponseEntity.ok(products);
+
+    @GetMapping(path = "/api/v1/product")
+    public ResponseEntity<List<Product>> Products() {return ResponseEntity.ok(productService.findAll());}
+
+
+    @GetMapping(path = "/api/v1/product/{id}")
+    public ResponseEntity<Product> ProductsById(@PathVariable Long id) {
+        var product = productService.findById(id);
+        return product != null? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
+    }
+
+
+    @PostMapping(path = "/api/v1/product")
+    public ResponseEntity<Void> createProduct(@RequestBody ProductManipulationRequest request) throws URISyntaxException {
+        var product = productService.create(request);
+        URI uri = new URI("/api/v1/product/" + product.getId());
+        return ResponseEntity.created(uri).build();
+    }
+
+
+    @PutMapping(path = "/api/v1/product/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody ProductManipulationRequest request) {
+        var product = productService.update(id, request);
+        return product != null? ResponseEntity.ok(product) : ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping(path = "/api/v1/product/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        boolean successful = productService.deleteById(id);
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
 
 }

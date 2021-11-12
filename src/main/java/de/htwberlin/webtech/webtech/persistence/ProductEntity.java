@@ -1,22 +1,36 @@
-package de.htwberlin.webtech.webtech.web.api;
+package de.htwberlin.webtech.webtech.persistence;
 
-public class Product {
-    public long id;
-    public String productName;
-    public String productDescription;
-    public float costs;
+import javax.persistence.*;
 
-    public Product(long id, String productName, String productDescription, float costs) {
-        this.id = id;
+@Entity(name = "product")
+public class ProductEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
+
+    @Column(name = "product_name", nullable = false)
+    private String productName;
+
+    @Column(name = "product_description", nullable = false)
+    private String productDescription;
+
+    @Column(name = "costs", nullable = false)
+    private float costs;
+
+
+    public ProductEntity(String productName, String productDescription, float costs) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.costs = costs;
     }
 
+    protected ProductEntity() {}
+
     public long getId() {
         return id;
     }
-
 
     public String getProductName() {
         return productName;
