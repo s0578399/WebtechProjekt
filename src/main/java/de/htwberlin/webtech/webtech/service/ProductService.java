@@ -46,6 +46,8 @@ public class ProductService {
         }
         var productEntity = productEntityOptional.get();
         productEntity.setProductName(request.getProductName());
+        productEntity.setProductDescription(request.getProductDescription());
+        productEntity.setCosts(request.getCosts());
         return transformEntity(productEntity);
     }
 
