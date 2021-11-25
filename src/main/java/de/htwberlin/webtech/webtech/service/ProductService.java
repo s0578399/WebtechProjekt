@@ -48,6 +48,7 @@ public class ProductService {
         productEntity.setProductName(request.getProductName());
         productEntity.setProductDescription(request.getProductDescription());
         productEntity.setCosts(request.getCosts());
+        productEntity = productRepository.save(productEntity);
         return transformEntity(productEntity);
     }
 
