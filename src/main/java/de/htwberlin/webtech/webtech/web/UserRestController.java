@@ -20,11 +20,11 @@ public class UserRestController {
 
 
     @GetMapping(path = "/api/v1/users")
-    public ResponseEntity<List<User>> kunden() {return ResponseEntity.ok(userService.findAll());}
+    public ResponseEntity<List<User>> getUsers() {return ResponseEntity.ok(userService.findAll());}
 
 
     @GetMapping(path = "/api/v1/users/{id}")
-    public ResponseEntity<User> kundenByID(@PathVariable Long id) {
+    public ResponseEntity<User> getUserByID(@PathVariable Long id) {
         var person = userService.findById(id);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
     }

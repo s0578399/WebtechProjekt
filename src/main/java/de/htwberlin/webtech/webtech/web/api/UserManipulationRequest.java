@@ -1,15 +1,34 @@
 package de.htwberlin.webtech.webtech.web.api;
 
+import de.htwberlin.webtech.webtech.persistence.BucketEntity;
+import de.htwberlin.webtech.webtech.persistence.RoleEntity;
+
+import javax.persistence.*;
+
 public class UserManipulationRequest {
 
     public String firstName;
     public String lastName;
     public String adresse;
+    public String login;
+    public String password;
+    public RoleEntity role;
+    public BucketEntity bucket;
 
     public UserManipulationRequest(String firstName, String lastName, String adresse) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.adresse = adresse;
+    }
+
+    public UserManipulationRequest(String firstName, String lastName, String adresse, String login, String password, RoleEntity role, BucketEntity bucket) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.adresse = adresse;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.bucket = bucket;
     }
 
     public String getFirstName() {
@@ -34,5 +53,37 @@ public class UserManipulationRequest {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public RoleEntity getRole() {
+        return role;
+    }
+
+    public void setRole(RoleEntity role) {
+        this.role = role;
+    }
+
+    public BucketEntity getBucket() {
+        return bucket;
+    }
+
+    public void setBucket(BucketEntity bucket) {
+        this.bucket = bucket;
     }
 }

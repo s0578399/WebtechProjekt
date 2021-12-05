@@ -1,15 +1,17 @@
 package de.htwberlin.webtech.webtech.web.api;
 
+import java.math.BigDecimal;
+
 public class ProductManipulationRequest {
 
     public String productName;
     public String productDescription;
-    public float costs;
+    public BigDecimal productPrice;
 
-    public ProductManipulationRequest(String productName, String productDescription, float costs) {
+    public ProductManipulationRequest(String productName, String productDescription, BigDecimal productPrice) {
         this.productName = productName;
         this.productDescription = productDescription;
-        this.costs = costs;
+        this.productPrice = productPrice;
     }
 
     public String getProductName() {
@@ -28,11 +30,11 @@ public class ProductManipulationRequest {
         this.productDescription = productDescription;
     }
 
-    public float getCosts() {
-        return costs;
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 
-    public void setCosts(float costs) {
-        this.costs = costs;
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 }

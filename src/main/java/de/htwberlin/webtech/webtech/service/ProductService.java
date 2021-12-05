@@ -33,7 +33,7 @@ public class ProductService {
 
 
     public Product create(ProductManipulationRequest request) {
-        var productEntity = new ProductEntity(request.getProductName(), request.getProductDescription(), request.getCosts());
+        var productEntity = new ProductEntity(request.getProductName(), request.getProductDescription(), request.getProductPrice());
         productEntity = productRepository.save(productEntity);
         return transformEntity(productEntity);
     }
@@ -64,7 +64,8 @@ public class ProductService {
                 productEntity.getId(),
                 productEntity.getProductName(),
                 productEntity.getProductDescription(),
-                productEntity.getCosts()
+                productEntity.getProductPrice(),
+                productEntity.getCategories()
         );
     }
 }

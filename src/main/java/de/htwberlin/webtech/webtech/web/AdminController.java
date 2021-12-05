@@ -10,15 +10,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminController {
 
     @GetMapping(path = "/cms")
-    public ModelAndView getCms() {return new ModelAndView("cms");
+    public String adminHome() {
+        return "cms";
     }
 
-    @GetMapping(path = "/cms/category")
-    public ModelAndView getCategory() {return new ModelAndView("category");
+    @GetMapping(path = "/cms/categories")
+    public String getCategory() {
+        return "category";
     }
 
-    @GetMapping(path = "/cms/product")
-    public ModelAndView getProduct() {return new ModelAndView("product");
+    @GetMapping(path = "/cms/categories/add")
+    public String getCategoryAdd() {
+        return "categoryAdd";
     }
 
 

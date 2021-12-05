@@ -33,7 +33,7 @@ public class UserService {
 
 
     public User create(UserManipulationRequest request) {
-        var personEntity = new UserEntity(request.getFirstName(), request.getLastName(), request.getAdresse());
+        var personEntity = new UserEntity(request.getFirstName(), request.getLastName(), request.getAdresse(), request.getLogin(), request.getPassword());
         personEntity = userRepository.save(personEntity);
         return transformEntity(personEntity);
     }
@@ -48,6 +48,7 @@ public class UserService {
         personEntity.setFirstName(request.getFirstName());
         personEntity.setLastName(request.getLastName());
         personEntity.setAdresse(request.getAdresse());
+
         personEntity = userRepository.save(personEntity);
         return transformEntity(personEntity);
     }
@@ -67,7 +68,9 @@ public class UserService {
                 userEntity.getId(),
                 userEntity.getFirstName(),
                 userEntity.getLastName(),
-                userEntity.getAdresse()
+                userEntity.getAdresse(),
+                userEntity.getLogin(),
+                userEntity.getPassword()
         );
     }
 

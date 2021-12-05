@@ -1,22 +1,31 @@
 package de.htwberlin.webtech.webtech.web.api;
 
+import de.htwberlin.webtech.webtech.persistence.CategoryEntity;
+
+import javax.persistence.Column;
+import java.math.BigDecimal;
+import java.util.List;
+
 public class Product {
     public long id;
     public String productName;
     public String productDescription;
-    public float costs;
+    public BigDecimal productPrice;
 
-    public Product(long id, String productName, String productDescription, float costs) {
+    public Product(long id, String productName, String productDescription, BigDecimal productPrice, List<CategoryEntity> categories) {
         this.id = id;
         this.productName = productName;
         this.productDescription = productDescription;
-        this.costs = costs;
+        this.productPrice = productPrice;
     }
 
     public long getId() {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getProductName() {
         return productName;
@@ -34,11 +43,11 @@ public class Product {
         this.productDescription = productDescription;
     }
 
-    public float getCosts() {
-        return costs;
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 
-    public void setCosts(float costs) {
-        this.costs = costs;
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 }
