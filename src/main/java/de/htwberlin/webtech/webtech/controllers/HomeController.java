@@ -1,4 +1,4 @@
-package de.htwberlin.webtech.webtech.web.api;
+package de.htwberlin.webtech.webtech.controllers;
 
 
 import org.springframework.stereotype.Controller;

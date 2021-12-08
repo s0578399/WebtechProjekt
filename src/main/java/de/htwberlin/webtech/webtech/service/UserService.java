@@ -1,7 +1,7 @@
 package de.htwberlin.webtech.webtech.service;
 
 import de.htwberlin.webtech.webtech.persistence.UserEntity;
-import de.htwberlin.webtech.webtech.persistence.UserRepository;
+import de.htwberlin.webtech.webtech.repository.UserRepository;
 import de.htwberlin.webtech.webtech.web.api.User;
 import de.htwberlin.webtech.webtech.web.api.UserManipulationRequest;
 import org.springframework.stereotype.Service;
@@ -33,7 +33,7 @@ public class UserService {
 
 
     public User create(UserManipulationRequest request) {
-        var personEntity = new UserEntity(request.getFirstName(), request.getLastName(), request.getAdresse(), request.getLogin(), request.getPassword());
+        var personEntity = new UserEntity(request.getLogin(), request.getPassword(), request.getFirstName(), request.getLastName(), request.getAdresse(), request.getRole(), request.getBucket());
         personEntity = userRepository.save(personEntity);
         return transformEntity(personEntity);
     }

@@ -12,10 +12,10 @@ public class UserEntity<Bucket> {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "login", nullable = false)
+    @Column(name = "login", nullable = true) //TO DO
     private String login;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = true)
     private String password;
 
     @Column(name = "first_name", nullable = false)
@@ -33,8 +33,8 @@ public class UserEntity<Bucket> {
     @OneToOne(cascade = CascadeType.REMOVE)
     private BucketEntity bucket;
 
-    public UserEntity(long id, String login, String password, String firstName, String lastName, String adresse, RoleEntity role, BucketEntity bucket) {
-        this.id = id;
+    public UserEntity(String login, String password, String firstName, String lastName, String adresse, RoleEntity role, BucketEntity bucket) {
+
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -44,8 +44,7 @@ public class UserEntity<Bucket> {
         this.bucket = bucket;
     }
 
-    public UserEntity(String firstName, String lastName, String adresse, String login, String password) {
-    }
+
 
     public UserEntity() {
 

@@ -1,7 +1,7 @@
 package de.htwberlin.webtech.webtech.service;
 
 import de.htwberlin.webtech.webtech.persistence.ProductEntity;
-import de.htwberlin.webtech.webtech.persistence.ProductRepository;
+import de.htwberlin.webtech.webtech.repository.ProductRepository;
 import de.htwberlin.webtech.webtech.web.api.Product;
 import de.htwberlin.webtech.webtech.web.api.ProductManipulationRequest;
 import org.springframework.stereotype.Service;

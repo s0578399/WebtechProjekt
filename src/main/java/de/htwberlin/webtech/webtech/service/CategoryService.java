@@ -1,7 +1,7 @@
 package de.htwberlin.webtech.webtech.service;
 
 import de.htwberlin.webtech.webtech.persistence.CategoryEntity;
-import de.htwberlin.webtech.webtech.persistence.CategoryRepository;
+import de.htwberlin.webtech.webtech.repository.CategoryRepository;
 import de.htwberlin.webtech.webtech.web.api.Category;
 import de.htwberlin.webtech.webtech.web.api.CategoryManipulationRequest;
 import org.springframework.stereotype.Service;

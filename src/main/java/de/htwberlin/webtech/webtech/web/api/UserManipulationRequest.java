@@ -15,11 +15,6 @@ public class UserManipulationRequest {
     public RoleEntity role;
     public BucketEntity bucket;
 
-    public UserManipulationRequest(String firstName, String lastName, String adresse) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.adresse = adresse;
-    }
 
     public UserManipulationRequest(String firstName, String lastName, String adresse, String login, String password, RoleEntity role, BucketEntity bucket) {
         this.firstName = firstName;
