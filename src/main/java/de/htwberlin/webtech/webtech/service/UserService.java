@@ -18,6 +18,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public UserEntity findString(String s) {
+        return userRepository.findUserEntityByFirstNameIsContaining(s);
+    }
+
     public List<User> findAll() {
         List<UserEntity> persons = userRepository.findAll();
         return persons.stream()
@@ -27,30 +31,35 @@ public class UserService {
 
 
     public User findById(Long id) {
-        var personEntity = userRepository.findById(id);
-        return personEntity.isPresent()? transformEntity(personEntity.get()) : null;
+        var userEntity = userRepository.findById(id);
+        return userEntity.isPresent()? transformEntity(userEntity.get()) : null;
     }
 
 
     public User create(UserManipulationRequest request) {
-        var personEntity = new UserEntity(request.getLogin(), request.getPassword(), request.getFirstName(), request.getLastName(), request.getAdresse(), request.getRole(), request.getBucket());
-        personEntity = userRepository.save(personEntity);
-        return transformEntity(personEntity);
+        var userEntity = new UserEntity(request.getLogin(), request.getPassword(), request.getFirstName(), request.getLastName(), request.getAdresse(), request.getRole(), request.getBucket());
+        userEntity = userRepository.save(userEntity);
+        return transformEntity(userEntity);
     }
 
 
     public User update(Long id, UserManipulationRequest request) {
-        var personEntityOptional = userRepository.findById(id);
-        if (personEntityOptional.isEmpty()) {
+        var userEntityOptional = userRepository.findById(id);
+        if (userEntityOptional.isEmpty()) {
             return null;
         }
-        var personEntity = personEntityOptional.get();
-        personEntity.setFirstName(request.getFirstName());
-        personEntity.setLastName(request.getLastName());
-        personEntity.setAdresse(request.getAdresse());
+        var userEntity = userEntityOptional.get();
+        userEntity.setLogin(request.getLogin());
+        userEntity.setPassword(request.getPassword());
+        userEntity.setFirstName(request.getFirstName());
+        userEntity.setLastName(request.getLastName());
+        userEntity.setAdresse(request.getAdresse());
+        userEntity.setRole(request.getRole());
+        userEntity.setBucket(request.getBucket());
 
-        personEntity = userRepository.save(personEntity);
-        return transformEntity(personEntity);
+        //userEntity = userRepository.save(userEntity);
+        userRepository.save(userEntity);
+        return transformEntity(userEntity);
     }
 
 
@@ -66,11 +75,13 @@ public class UserService {
     private User transformEntity(UserEntity userEntity) {
         return new User(
                 userEntity.getId(),
+                userEntity.getLogin(),
+                userEntity.getPassword(),
                 userEntity.getFirstName(),
                 userEntity.getLastName(),
                 userEntity.getAdresse(),
-                userEntity.getLogin(),
-                userEntity.getPassword()
+                userEntity.getRole(),
+                userEntity.getBucket()
         );
     }
 

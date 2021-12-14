@@ -5,26 +5,23 @@ import de.htwberlin.webtech.webtech.persistence.RoleEntity;
 
 public class User {
     public long id;
+    public String login;
+    public String password;
     public String firstName;
     public String lastName;
     public String adresse;
-    public String login;
-    public String password;
     public RoleEntity role;
     public BucketEntity bucket;
 
-    public User(long id, String firstName, String lastName, String adresse, String login, String password, RoleEntity role, BucketEntity bucket) {
+    public User(long id, String login, String password, String firstName, String lastName, String adresse, RoleEntity role, BucketEntity bucket) {
         this.id = id;
+        this.login = login;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.adresse = adresse;
-        this.login = login;
-        this.password = password;
         this.role = role;
         this.bucket = bucket;
-    }
-
-    public User(long id, String firstName, String lastName, String adresse, String login, String password) {
     }
 
     public long getId() {

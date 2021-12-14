@@ -1,2 +1,4 @@
-package de.htwberlin.webtech.webtech.web.api;public class OrderDetails {
+package de.htwberlin.webtech.webtech.web.api;
+
+public class OrderDetails {
 }

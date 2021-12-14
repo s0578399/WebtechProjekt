@@ -9,7 +9,7 @@ public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
     @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
-    @Column(name = "id")
+    @Column(name = "category_id")
     private long id;
 
     @Column(name = "category_name", nullable = false)

@@ -6,17 +6,19 @@ import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Product {
+public class Products {
     public long id;
     public String productName;
     public String productDescription;
     public BigDecimal productPrice;
+    private List<CategoryEntity> categories;
 
-    public Product(long id, String productName, String productDescription, BigDecimal productPrice, List<CategoryEntity> categories) {
+    public Products(long id, String productName, String productDescription, BigDecimal productPrice, List<CategoryEntity> categories) {
         this.id = id;
         this.productName = productName;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
+        this.categories = categories;
     }
 
     public long getId() {
@@ -49,5 +51,13 @@ public class Product {
 
     public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public List<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<CategoryEntity> categories) {
+        this.categories = categories;
     }
 }

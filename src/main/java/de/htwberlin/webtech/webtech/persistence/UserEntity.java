@@ -3,13 +3,13 @@ package de.htwberlin.webtech.webtech.persistence;
 import javax.persistence.*;
 
 @Entity(name = "users")
-public class UserEntity<Bucket> {
+public class UserEntity {
     private static final String SEQ_NAME = "user_seq";
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
     @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private long id;
 
     @Column(name = "login", nullable = true) //TO DO
@@ -27,6 +27,7 @@ public class UserEntity<Bucket> {
     @Column(name = "adresse", nullable = false)
     private String adresse;
 
+    @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private RoleEntity role;
 
@@ -44,9 +45,7 @@ public class UserEntity<Bucket> {
         this.bucket = bucket;
     }
 
-
-
-    public UserEntity() {
+    protected UserEntity() {
 
     }
 

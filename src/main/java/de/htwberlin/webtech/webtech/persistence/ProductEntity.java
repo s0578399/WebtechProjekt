@@ -12,7 +12,7 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_NAME)
     @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
-    @Column(name = "id")
+    @Column(name = "product_id")
     private long id;
 
     @Column(name = "product_name", nullable = false)
@@ -25,30 +25,23 @@ public class ProductEntity {
     private BigDecimal productPrice;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Products_categories",
+    @JoinTable(name = "products_categories",
     joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<CategoryEntity> categories;
 
-    public ProductEntity(long id, String productName, String productDescription, BigDecimal productPrice, List<CategoryEntity> categories) {
-        this.id = id;
+
+    public ProductEntity(String productName, String productDescription, BigDecimal productPrice, List<CategoryEntity> categories) {
+
         this.productName = productName;
         this.productDescription = productDescription;
         this.productPrice = productPrice;
         this.categories = categories;
     }
 
-    public ProductEntity(String productName, String productDescription) {
+    protected ProductEntity() {}
 
-    }
 
-    public ProductEntity() {
-
-    }
-
-    public ProductEntity(String productName, String productDescription, BigDecimal productPrice) {
-
-    }
 
     public long getId() {
         return id;

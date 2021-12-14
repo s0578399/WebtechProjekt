@@ -1,5 +1,5 @@
 package de.htwberlin.webtech.webtech.persistence;
 
-public enum OrderStatus {
+public enum OrderStatusEntity {
     NEW, APPROVED, CANCELED, PAID, CLOSED
 }

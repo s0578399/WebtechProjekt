@@ -2,7 +2,7 @@ package de.htwberlin.webtech.webtech.service;
 
 import de.htwberlin.webtech.webtech.persistence.ProductEntity;
 import de.htwberlin.webtech.webtech.repository.ProductRepository;
-import de.htwberlin.webtech.webtech.web.api.Product;
+import de.htwberlin.webtech.webtech.web.api.Products;
 import de.htwberlin.webtech.webtech.web.api.ProductManipulationRequest;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> findAll() {
+    public List<Products> findAll() {
         List<ProductEntity> products = productRepository.findAll();
         return products.stream()
                 .map(this::transformEntity)
@@ -26,20 +26,20 @@ public class ProductService {
     }
 
 
-    public Product findById(Long id) {
+    public Products findById(Long id) {
         var productEntity = productRepository.findById(id);
         return productEntity.isPresent() ? transformEntity(productEntity.get()) : null;
     }
 
 
-    public Product create(ProductManipulationRequest request) {
-        var productEntity = new ProductEntity(request.getProductName(), request.getProductDescription(), request.getProductPrice());
-        productEntity = productRepository.save(productEntity);
+    public Products create(ProductManipulationRequest request) {
+        var productEntity = new ProductEntity(request.getProductName(), request.getProductDescription(), request.getProductPrice(), request.getCategories());
+        productRepository.save(productEntity);
         return transformEntity(productEntity);
     }
 
 
-    public Product update(Long id, ProductManipulationRequest request) {
+    public Products update(Long id, ProductManipulationRequest request) {
         var productEntityOptional = productRepository.findById(id);
         if (productEntityOptional.isEmpty()) {
             return null;
@@ -59,8 +59,8 @@ public class ProductService {
     }
 
 
-    private Product transformEntity(ProductEntity productEntity) {
-        return new Product(
+    private Products transformEntity(ProductEntity productEntity) {
+        return new Products(
                 productEntity.getId(),
                 productEntity.getProductName(),
                 productEntity.getProductDescription(),
