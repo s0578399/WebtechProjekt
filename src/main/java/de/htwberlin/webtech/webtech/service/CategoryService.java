@@ -46,6 +46,7 @@ public class CategoryService {
         }
         var categoryEntity = categoryEntityOptional.get();
         categoryEntity.setCategoryName(request.getCategoryName());
+        categoryEntity = categoryRepository.save(categoryEntity);
         return transformEntity(categoryEntity);
     }
 
