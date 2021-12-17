@@ -5,7 +5,7 @@ import de.htwberlin.webtech.webtech.persistence.CategoryEntity;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class ProductManipulationRequest {
+public class    ProductManipulationRequest {
 
     public String productName;
     public String productDescription;
