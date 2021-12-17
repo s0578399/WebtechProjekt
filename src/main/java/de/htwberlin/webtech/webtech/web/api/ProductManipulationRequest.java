@@ -12,6 +12,8 @@ public class ProductManipulationRequest {
         this.costs = costs;
     }
 
+    public ProductManipulationRequest(){};
+
     public String getProductName() {
         return productName;
     }

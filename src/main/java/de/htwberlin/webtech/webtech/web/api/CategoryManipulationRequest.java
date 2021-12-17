@@ -8,7 +8,7 @@ public class CategoryManipulationRequest {
         this.categoryName = categoryName;
     }
 
-    protected CategoryManipulationRequest() {};
+    public CategoryManipulationRequest() {};
 
     public String getCategoryName() {
         return categoryName;

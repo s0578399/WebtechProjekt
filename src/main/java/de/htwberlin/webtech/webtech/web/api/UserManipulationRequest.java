@@ -12,6 +12,8 @@ public class UserManipulationRequest {
         this.adresse = adresse;
     }
 
+    public UserManipulationRequest(){};
+
     public String getFirstName() {
         return firstName;
     }
