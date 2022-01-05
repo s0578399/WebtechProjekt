@@ -5,12 +5,14 @@ public class Product {
     public String productName;
     public String productDescription;
     public float costs;
+    public String productUrl;
 
-    public Product(long id, String productName, String productDescription, float costs) {
+    public Product(long id, String productName, String productDescription, float costs, String productUrl) {
         this.id = id;
         this.productName = productName;
         this.productDescription = productDescription;
         this.costs = costs;
+        this.productUrl = productUrl;
     }
 
     public long getId() {
@@ -41,4 +43,8 @@ public class Product {
     public void setCosts(float costs) {
         this.costs = costs;
     }
+
+    public String getProductUrl() {return productUrl; }
+
+    public void setProductUrl(String productUrl) { this.productUrl = productUrl; }
 }

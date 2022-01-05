@@ -5,11 +5,13 @@ public class ProductManipulationRequest {
     public String productName;
     public String productDescription;
     public float costs;
+    public String productUrl;
 
-    public ProductManipulationRequest(String productName, String productDescription, float costs) {
+    public ProductManipulationRequest(String productName, String productDescription, float costs, String productUrl) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.costs = costs;
+        this.productUrl = productUrl;
     }
 
     public ProductManipulationRequest(){};
@@ -37,4 +39,8 @@ public class ProductManipulationRequest {
     public void setCosts(float costs) {
         this.costs = costs;
     }
+
+    public String getProductUrl() {return productUrl; }
+
+    public void setProductUrl(String productUrl) {this.productUrl = productUrl; }
 }

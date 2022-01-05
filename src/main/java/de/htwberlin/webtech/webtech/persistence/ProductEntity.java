@@ -19,11 +19,15 @@ public class ProductEntity {
     @Column(name = "costs", nullable = false)
     private float costs;
 
+    @Column(name = "product_url", nullable = false)
+    private String productUrl;
 
-    public ProductEntity(String productName, String productDescription, float costs) {
+
+    public ProductEntity(String productName, String productDescription, float costs, String productUrl) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.costs = costs;
+        this.productUrl = productUrl;
     }
 
     protected ProductEntity() {}
@@ -55,4 +59,8 @@ public class ProductEntity {
     public void setCosts(float costs) {
         this.costs = costs;
     }
+
+    public String getProductUrl() { return productUrl; }
+
+    public void setProductUrl(String productUrl) { this.productUrl = productUrl; }
 }
