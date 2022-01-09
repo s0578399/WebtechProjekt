@@ -62,19 +62,6 @@ public class ProductServiceTest {
         assertEquals(actual.getCosts(), 25.00F);
     }
 
-    // Dieser Test benutzt kein Mock, da eine ProductEntity mit ID in transFormEntity verarbeitet wird.
-    // Die Id wird erst in der Datenbank generiert.
-    @Test
-    @DisplayName("")
-    void createTest() {
-        var p1 = new Product(1, "Kaktus", "keine Beschreibung", 25.00F, "Keine URL");
-        var p2 = new ProductEntity("Kaktus", "keine Beschreibung", 10.00F, "Keine URL");
-        var p3 = new ProductManipulationRequest("Kaktus", "keine Beschreibung", 25.00F, "Keine URL");
-        doReturn(p2).when(repository).save(p2);
-        var actual = service.create(p3);
-
-        assertEquals("Kaktus", actual.getProductName());
-    }
 
     @Test
     @DisplayName("should update a product")

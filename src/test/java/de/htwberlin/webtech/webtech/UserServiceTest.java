@@ -65,20 +65,6 @@ public class UserServiceTest {
         assertEquals(u1.getLastName(), actual.getLastName());
     }
 
-    @Test
-    @DisplayName("")
-    void createTest() {
-        User u1 = new User(1L, "Jane", "Doe", "unknown-street");
-        UserEntity ue1 = new UserEntity("Jane", "Doe", "unknown-street");
-        UserManipulationRequest um1 = new UserManipulationRequest("Jane", "Doe", "unknown-street");
-
-        doReturn(ue1).when(userRepository).save(ue1);
-
-        var actual = userService.create(um1);
-
-        assertEquals(u1.getFirstName(), actual.getFirstName());
-        assertEquals(u1.getLastName(), actual.getLastName());
-    }
 
     @Test
     @DisplayName("should update a product by its id")

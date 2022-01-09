@@ -63,20 +63,6 @@ public class CategoryServiceTest {
         assertEquals(c.getCategoryName(), actual.getCategoryName());
     }
 
-    @Test
-    @DisplayName("")
-    void createTest() {
-        Category c = new Category(1L, "Pflanzen");
-        CategoryEntity ce = new CategoryEntity("Pflanzen");
-        CategoryManipulationRequest cm = new CategoryManipulationRequest("Pflanzen");
-
-        doReturn(ce).when(categoryRepository).save(ce);
-
-        var actual = categoryService.create(cm);
-
-        assertEquals(c.getCategoryName(), actual.getCategoryName());
-
-    }
 
     @Test
     @DisplayName("should update a category by its id")
