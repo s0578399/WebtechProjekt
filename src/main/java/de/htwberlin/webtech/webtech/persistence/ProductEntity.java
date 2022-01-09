@@ -1,6 +1,8 @@
 package de.htwberlin.webtech.webtech.persistence;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "product")
 public class ProductEntity {
@@ -22,12 +24,15 @@ public class ProductEntity {
     @Column(name = "product_url", nullable = false)
     private String productUrl;
 
+    @ManyToMany(mappedBy = "products", fetch = FetchType.LAZY)
+    private List<OrderEntity> orders;
 
     public ProductEntity(String productName, String productDescription, float costs, String productUrl) {
         this.productName = productName;
         this.productDescription = productDescription;
         this.costs = costs;
         this.productUrl = productUrl;
+
     }
 
     protected ProductEntity() {}

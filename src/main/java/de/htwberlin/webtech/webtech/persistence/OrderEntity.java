@@ -33,7 +33,7 @@ public class OrderEntity {
 
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "order_products",
             joinColumns = @JoinColumn(name = "order_id", nullable = false, insertable = false, updatable = false),
             inverseJoinColumns = @JoinColumn(name = "product_id", nullable = false)
