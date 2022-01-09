@@ -15,6 +15,8 @@ public class Product {
         this.productUrl = productUrl;
     }
 
+    public Product(){}
+
     public long getId() {
         return id;
     }
