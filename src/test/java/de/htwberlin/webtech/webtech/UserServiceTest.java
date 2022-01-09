@@ -83,7 +83,7 @@ public class UserServiceTest {
     }
 
     @Test
-    @DisplayName("")
+    @DisplayName("should delete a user by its id")
     void deleteByIdTest() {
         doReturn(true).when(userRepository).existsById(1L);
 
